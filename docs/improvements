@@ -1,0 +1,44 @@
+Files:
+appointment
+    rating: 8/10
+
+availability
+
+    Service Provider availabilities doesn't work
+
+    rating: 6/10
+    
+colors
+    rating: ---
+    
+init
+    rating: ---
+    
+main
+    rating: 5/10
+    
+print
+    rating: ---
+    
+service
+    rating: 8/10
+    
+serviceProvider
+
+    You can't add a pre-existing service to a new service service provider
+
+    rating: 5/10
+    
+test
+    rating: 7/10
+    
+timeblock
+    rating: 7/10
+    
+
+Commitments:
+-------------------------Organize the files into folders
+Verify user inputs
+Add more tests
+Break up the main file into smaller files
+Refine the availability function to show service providers availability
