@@ -1,19 +1,14 @@
-# def find_sp_by_service(serviceName)
-#     sp_with_service = []
-#     for sp in $all_sp do
-#       for s in sp.services do
-#         if s.name == serviceName
-#           sp_with_service.push(sp)
-#           break
-#         end
-#       end
-#     end
-#     return sp_with_service
-#   end
-
   def spAdd
     provider_name = $prompt.ask('Provider Name:')
+    while (provider_name == nil)
+      puts "Error: Invalid Name"
+      provider_name = $prompt.ask('Provider Name:')
+    end
     provider_phone = $prompt.ask('Provider Phone Number:')
+    while (provider_phone == nil)
+      puts "Error: Invalid Phone"
+      provider_phone = $prompt.ask('Provider Phone Number:')
+    end
     $all_sp.push(ServiceProvider.new(provider_name, provider_phone, [], {}, []))
     successPrint()
   end

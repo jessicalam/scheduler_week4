@@ -3,10 +3,32 @@ def availabilityAdd
     puts 'Provider Name:'
     sp = select_sp()
     month = $prompt.ask('Date (MM):')
+    while (month.to_i < 1 || month.to_i > 12 || !month)
+      puts "Error: Invalid Month"
+      month = prompt.ask('Date (MM):')
+    end
+
     day = $prompt.ask('Date (DD):')
+    while (day.to_i < 1 || day.to_i > 31 || !day)
+      puts "Error: Invalid Day"
+      day = prompt.ask('Date (DD):')
+    end
+
     year = $prompt.ask('Date (YYYY):')
+    while (year.to_i < 2018 || !year)
+      puts "Error: Invalid Year"
+      day = prompt.ask('Date (YYYY):')
+    end
     start_time = $prompt.ask('Start Time (ex: 13:30):')
+    while (start_time == nil)
+      puts "Error: Start Time"
+      day = prompt.ask('Start Time (ex: 13:30):')
+    end
     end_time = $prompt.ask('End Time (ex: 14:30):')
+    while (end_time == nil)
+      puts "Error: End Time"
+      end_time = $prompt.ask('End Time (ex: 14:30):')
+    end
 
     
     puts 'Will This Availability Reoccur Weekly?'
@@ -56,9 +78,9 @@ def availabilityAdd
   def y_or_n
     loop do
       yn = $prompt.ask('(y/n):')
-      if yn == 'y'
+      if yn == 'y' || yn == 'yes'
         return true
-      elsif yn == 'n'
+      elsif yn == 'n' || yn == 'no'
         return false
       else
         puts "Enter y or n"

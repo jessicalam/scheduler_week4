@@ -65,19 +65,7 @@ class ServiceProvider
 
     #check if provider offers service
     service_offered = containsService(service.name)
-    # puts('past service_offered')
 
-    #check provider's availability
-    # availability_blocks = @availability[timeblock.dayOfWeek]
-    # puts('past availability_blocks')
-    #IDK what is wrong with this but causes program to crash, commented out for now
-    # provider_available = false
-    # for block in availability_blocks do
-    #   if block.contains(timeblock)
-    #     provider_available = true
-    #   end
-    # end
-    #
     provider_available = true
 
     #check for overlap with provider's appointments
