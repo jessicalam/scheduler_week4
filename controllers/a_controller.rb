@@ -3,6 +3,10 @@ require_relative './s_controller'
 
 def appointmentAdd
     client_name = $prompt.ask('Client Name:')
+    while (client_name == nil)
+      puts "Error: Name"
+      client_name = $prompt.ask('Client Name:')
+    end
     puts "Hello #{client_name}! Choose Provider & Service to Schedule"
     servicePrint($all_sp)
     puts 'Provider Name:'
@@ -16,9 +20,27 @@ def appointmentAdd
     is_available = false
     while !is_available
       month = $prompt.ask('Date (MM):')
+      while (month.to_i < 1 || month.to_i > 12 || !month)
+        puts "Error: Invalid Month"
+        month = prompt.ask('Date (MM):')
+      end
+
       day = $prompt.ask('Date (DD):')
+      while (day.to_i < 1 || day.to_i > 31 || !day)
+        puts "Error: Invalid Day"
+        day = prompt.ask('Date (DD):')
+      end
+
       year = $prompt.ask('Date (YYYY):')
+      while (year.to_i < 2018 || !year)
+        puts "Error: Invalid Year"
+        day = prompt.ask('Date (YYYY):')
+      end
       start_time = $prompt.ask('Start Time (ex: 13:30):')
+      while (start_time == nil)
+        puts "Error: Start Time"
+        day = prompt.ask('Start Time (ex: 13:30):')
+      end
       temp = start_time.split(':')
       hour = temp[0].to_i
       minute = temp[1].to_i
@@ -66,9 +88,9 @@ def appointmentAdd
   def y_or_n
     loop do
       yn = $prompt.ask('(y/n):')
-      if yn == 'y'
+      if yn == 'y' || yn == 'yes'
         return true
-      elsif yn == 'n'
+      elsif yn == 'n' || yn == 'no'
         return false
       else
         puts "Enter y or n"

@@ -3,8 +3,20 @@ require_relative './sp_controller'
 
 def serviceAdd
     service_name = $prompt.ask('Service Name:')
+    while (service_name == nil)
+      puts "Error: Invalid Name"
+      service_name = $prompt.ask('Service Name:')
+    end
     service_price = $prompt.ask('Service Price:')
+    while (service_price == nil)
+      puts "Error: Invalid Price"
+      service_price = $prompt.ask('Service Price:')
+    end
     service_length = $prompt.ask('Service Length (Mins):')
+    while (service_length == nil)
+      puts "Error: Invalid Length"
+      service_length = $prompt.ask('Service Length (Mins):')
+    end
     loop do
       sp = select_sp()
       if sp
