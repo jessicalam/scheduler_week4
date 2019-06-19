@@ -1,14 +1,14 @@
 require 'simplecov'
 SimpleCov.start
 
-require_relative '../files/service'
-require_relative '../files/serviceProvider'
-require_relative '../files/appointment'
-require_relative '../files/timeblock'
+require_relative '../models/service'
+require_relative '../models/serviceProvider'
+require_relative '../models/appointment'
+require_relative '../models/timeblock'
 require_relative '../lib/print'
 require_relative '../seeder/init'
 require_relative '../lib/colors'
-require_relative '../files/availability'
+require_relative '../models/availability'
 require 'date'
 # require 'launchy'
 
@@ -150,7 +150,7 @@ RSpec.describe ServiceProvider do
             end
         end
 
-        describe "add appointment with conflicts" do
+        describe "add appointment with non-weekly appointment conflict" do
             it "should print an error message and return false" do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
@@ -160,6 +160,44 @@ RSpec.describe ServiceProvider do
                 tb1 = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
                 sp.add_appointment(serv1, tb1, 'bill')
                 expect(sp.add_appointment(serv2, tb1, 'bill')).to eq(false)
+            end
+        end
+
+        describe "add appointment with weekly appointment conflict" do
+            it "should print an error message and return false" do
+                sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
+                serv1 = Service.new("hugs", 0, 180)
+                serv2 = Service.new("shrugs", 3, 60)
+                sp.serviceAdd(serv1)
+                sp.serviceAdd(serv2)
+                tb1 = TimeBlock.new(DateTime.new(2019, 12, 5, 12), true, 120)
+                tb2 = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
+                sp.add_appointment(serv1, tb1, 'bill')
+                expect(sp.add_appointment(serv2, tb2, 'bill')).to eq(false)
+            end
+        end
+
+        describe "add appointment with non-weekly availability conflict" do
+            it "should print an error message and return false" do
+                sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
+                serv1 = Service.new("hugs", 0, 180)
+                sp.serviceAdd(serv1)
+                tb_avail = TimeBlock.new(DateTime.new(2019, 8, 8, 12), false, 240)
+                tb_app = TimeBlock.new(DateTime.new(2019, 8, 8, 15), false, 120)
+                sp.add_availability(tb_avail)
+                expect(sp.add_appointment(serv1, tb_app, 'bill')).to eq(false)
+            end
+        end
+
+        describe "add appointment with weekly availability conflict" do
+            it "should print an error message and return false" do
+                sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
+                serv1 = Service.new("hugs", 0, 180)
+                sp.serviceAdd(serv1)
+                tb_avail = TimeBlock.new(DateTime.new(2019, 8, 8, 12), true, 240)
+                tb_app = TimeBlock.new(DateTime.new(2019, 8, 15, 15), false, 120)
+                sp.add_availability(tb_avail)
+                expect(sp.add_appointment(serv1, tb_app, 'bill')).to eq(false)
             end
         end
     end
