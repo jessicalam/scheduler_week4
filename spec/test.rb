@@ -117,22 +117,6 @@ RSpec.describe ServiceProvider do
                 expect(sp.is_available(serv2, tb1, false)).to eq(false)
             end
         end
-
-        # describe "no conflicts with availability" do
-        #     it "should return true" do
-        #         sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
-        #         av = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
-        #         sp.add_availability(av)
-        #     end
-        # end
-
-        # describe "conflict with availability" do
-        #     it "should return false" do
-        #         sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
-        #         av = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
-        #         sp.add_availability(av)
-        #     end
-        # end
     end
 
 

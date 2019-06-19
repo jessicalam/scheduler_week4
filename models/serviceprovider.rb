@@ -58,7 +58,7 @@ class ServiceProvider
     @services.push(service)
   )
   end
-  
+
   def is_available(service, timeblock, isWeekly)
     #add check to make sure timeblock is in the future
     is_future_date = (timeblock.startTime >= DateTime.now)
@@ -66,51 +66,56 @@ class ServiceProvider
     #check if provider offers service
     service_offered = containsService(service.name)
 
-    provider_available = true
-
     #check for overlap with provider's appointments
-    no_overlap_with_appointments = true
+    overlap_with_appointments = conflict_with_appointments?(service, timeblock, isWeekly)
+
+    #check if potential appointment is within provider's availability
+    availability_compatible = availability_contains?(service, timeblock, isWeekly)
+
+    return is_future_date && service_offered && 
+      !overlap_with_appointments && availability_compatible
+
+  end
+
+  def conflict_with_appointments?(service, timeblock, isWeekly)
     puts('-----------------')
     @appointments.each do |appointment|
       #check for overlap if either appointment is weekly
-
       if appointment.timeblock.isWeekly || isWeekly
         if appointment.timeblock.dayOfWeek == timeblock.dayOfWeek
           if appointment.timeblock.overlaps_time(timeblock)
-            no_overlap_with_appointments = false
+            return true
           end
         end
       end
-      #check for overlap if dates are the same
 
+      #check for overlap if dates are the same
       if appointment.timeblock.overlaps(timeblock)
-        no_overlap_with_appointments = false
+        return true
       end
     end
+    return false
+  end
 
-    availability_contains = true
+  def availability_contains?(service, timeblock, isWeekly)
     @availability.each do |av|
       #check if appointment is contained within availability if availability is weekly
-
       if av.isWeekly || isWeekly
         if av.dayOfWeek == timeblock.dayOfWeek
           if !av.contains_time(timeblock)
-            availability_contains = false
+            return false
           end
         end
       else
         #check if appointment is contained within availability on same date
         if av.month == timeblock.month && av.day == timeblock.day && av.year == timeblock.year
           if !av.contains(timeblock)
-            availability_contains = false
+            return false
           end
         end
       end
     end
-
-    return is_future_date && service_offered && provider_available && 
-      no_overlap_with_appointments && availability_contains
-
+    return true
   end
 
   def add_appointment(service, timeblock, client)
@@ -128,9 +133,8 @@ class ServiceProvider
   end
 
   def add_availability(timeblock)
-    #need to add a check here
+    #need to add a check here? probably not
     @availability << timeblock
   end
-
 
 end

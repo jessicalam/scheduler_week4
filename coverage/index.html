@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-06-19T18:51:13-04:00">2019-06-19T18:51:13-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-06-19T19:48:36-04:00">2019-06-19T19:48:36-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">71.29%</span></span>
+    (<span class="covered_percent"><span class="red">71.71%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.92
+         2.94
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>8</b> files in total.
-    <b>202</b> relevant lines. 
-    <span class="green"><b>144</b> lines covered</span> and
+    <b>205</b> relevant lines. 
+    <span class="green"><b>147</b> lines covered</span> and
     <span class="red"><b>58</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -102,10 +102,10 @@
       
       <tr>
         <td class="strong"><a href="#9280a080c5c55df3d0183cd439c9bced5d98c561" class="src_link" title="models/serviceProvider.rb">models/serviceProvider.rb</a></td>
-        <td class="red strong">80.0 %</td>
-        <td>136</td>
-        <td>70</td>
-        <td>56</td>
+        <td class="yellow strong">80.82 %</td>
+        <td>140</td>
+        <td>73</td>
+        <td>59</td>
         <td>14</td>
         <td>4.6</td>
       </tr>
@@ -916,10 +916,10 @@
         <div class="source_table" id="9280a080c5c55df3d0183cd439c9bced5d98c561">
   <div class="header">
     <h3>models/serviceProvider.rb</h3>
-    <h4><span class="red">80.0 %</span> covered</h4>
+    <h4><span class="yellow">80.82 %</span> covered</h4>
     <div>
-      <b>70</b> relevant lines. 
-      <span class="green"><b>56</b> lines covered</span> and
+      <b>73</b> relevant lines. 
+      <span class="green"><b>59</b> lines covered</span> and
       <span class="red"><b>14</b> lines missed.</span>
     </div>
   </div>
@@ -1290,7 +1290,7 @@
         <li class="never" data-hits="" data-linenumber="61">
           
           
-          <code class="ruby">  </code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="62">
@@ -1335,388 +1335,388 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="69">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    provider_available = true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="70">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="71">
+        <li class="never" data-hits="" data-linenumber="69">
           
           
           <code class="ruby">    #check for overlap with provider&#39;s appointments</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="72">
+        <li class="covered" data-hits="12" data-linenumber="70">
           <span class="hits">12</span>
           
-          <code class="ruby">    no_overlap_with_appointments = true</code>
+          <code class="ruby">    overlap_with_appointments = conflict_with_appointments?(service, timeblock, isWeekly)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby">    #check if potential appointment is within provider&#39;s availability</code>
         </li>
       
         <li class="covered" data-hits="12" data-linenumber="73">
           <span class="hits">12</span>
           
-          <code class="ruby">    puts(&#39;-----------------&#39;)</code>
+          <code class="ruby">    availability_compatible = availability_contains?(service, timeblock, isWeekly)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="74">
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="75">
           <span class="hits">12</span>
           
-          <code class="ruby">    @appointments.each do |appointment|</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="75">
-          
-          
-          <code class="ruby">      #check for overlap if either appointment is weekly</code>
+          <code class="ruby">    return is_future_date &amp;&amp; service_offered &amp;&amp; </code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="76">
           
           
+          <code class="ruby">      !overlap_with_appointments &amp;&amp; availability_compatible</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="77">
-          <span class="hits">5</span>
+        <li class="never" data-hits="" data-linenumber="78">
           
-          <code class="ruby">      if appointment.timeblock.isWeekly || isWeekly</code>
+          
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="78">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="79">
           
-          <code class="ruby">        if appointment.timeblock.dayOfWeek == timeblock.dayOfWeek</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="79">
-          <span class="hits">1</span>
           
-          <code class="ruby">          if appointment.timeblock.overlaps_time(timeblock)</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="covered" data-hits="1" data-linenumber="80">
           <span class="hits">1</span>
           
-          <code class="ruby">            no_overlap_with_appointments = false</code>
+          <code class="ruby">  def conflict_with_appointments?(service, timeblock, isWeekly)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="81">
+        <li class="covered" data-hits="12" data-linenumber="81">
+          <span class="hits">12</span>
           
-          
-          <code class="ruby">          end</code>
+          <code class="ruby">    puts(&#39;-----------------&#39;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="82">
+        <li class="covered" data-hits="12" data-linenumber="82">
+          <span class="hits">12</span>
           
-          
-          <code class="ruby">        end</code>
+          <code class="ruby">    @appointments.each do |appointment|</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="83">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">      #check for overlap if either appointment is weekly</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="84">
-          
-          
-          <code class="ruby">      #check for overlap if dates are the same</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="85">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="5" data-linenumber="86">
+        <li class="covered" data-hits="5" data-linenumber="84">
           <span class="hits">5</span>
           
-          <code class="ruby">      if appointment.timeblock.overlaps(timeblock)</code>
+          <code class="ruby">      if appointment.timeblock.isWeekly || isWeekly</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="87">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="1" data-linenumber="85">
+          <span class="hits">1</span>
           
-          <code class="ruby">        no_overlap_with_appointments = false</code>
+          <code class="ruby">        if appointment.timeblock.dayOfWeek == timeblock.dayOfWeek</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="86">
+          <span class="hits">1</span>
+          
+          <code class="ruby">          if appointment.timeblock.overlaps_time(timeblock)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="87">
+          <span class="hits">1</span>
+          
+          <code class="ruby">            return true</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="88">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">          end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="89">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">        end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="90">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="91">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    availability_contains = true</code>
-        </li>
-      
-        <li class="covered" data-hits="12" data-linenumber="92">
-          <span class="hits">12</span>
-          
-          <code class="ruby">    @availability.each do |av|</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="93">
-          
-          
-          <code class="ruby">      #check if appointment is contained within availability if availability is weekly</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="94">
+        <li class="never" data-hits="" data-linenumber="91">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="95">
+        <li class="never" data-hits="" data-linenumber="92">
+          
+          
+          <code class="ruby">      #check for overlap if dates are the same</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="93">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      if appointment.timeblock.overlaps(timeblock)</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="94">
           <span class="hits">2</span>
           
-          <code class="ruby">      if av.isWeekly || isWeekly</code>
+          <code class="ruby">        return true</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="96">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        if av.dayOfWeek == timeblock.dayOfWeek</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="97">
-          <span class="hits">1</span>
-          
-          <code class="ruby">          if !av.contains_time(timeblock)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="98">
-          <span class="hits">1</span>
-          
-          <code class="ruby">            availability_contains = false</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="99">
-          
-          
-          <code class="ruby">          end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="100">
-          
-          
-          <code class="ruby">        end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="101">
-          
-          
-          <code class="ruby">      else</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="102">
-          
-          
-          <code class="ruby">        #check if appointment is contained within availability on same date</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="103">
-          <span class="hits">1</span>
-          
-          <code class="ruby">        if av.month == timeblock.month &amp;&amp; av.day == timeblock.day &amp;&amp; av.year == timeblock.year</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="104">
-          <span class="hits">1</span>
-          
-          <code class="ruby">          if !av.contains(timeblock)</code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="105">
-          <span class="hits">1</span>
-          
-          <code class="ruby">            availability_contains = false</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="106">
-          
-          
-          <code class="ruby">          end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="107">
-          
-          
-          <code class="ruby">        end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="108">
+        <li class="never" data-hits="" data-linenumber="95">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="109">
+        <li class="never" data-hits="" data-linenumber="96">
           
           
           <code class="ruby">    end</code>
+        </li>
+      
+        <li class="covered" data-hits="9" data-linenumber="97">
+          <span class="hits">9</span>
+          
+          <code class="ruby">    return false</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="98">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="99">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="100">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def availability_contains?(service, timeblock, isWeekly)</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="101">
+          <span class="hits">12</span>
+          
+          <code class="ruby">    @availability.each do |av|</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="102">
+          
+          
+          <code class="ruby">      #check if appointment is contained within availability if availability is weekly</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="103">
+          <span class="hits">2</span>
+          
+          <code class="ruby">      if av.isWeekly || isWeekly</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="104">
+          <span class="hits">1</span>
+          
+          <code class="ruby">        if av.dayOfWeek == timeblock.dayOfWeek</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="105">
+          <span class="hits">1</span>
+          
+          <code class="ruby">          if !av.contains_time(timeblock)</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="106">
+          <span class="hits">1</span>
+          
+          <code class="ruby">            return false</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="107">
+          
+          
+          <code class="ruby">          end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="108">
+          
+          
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="109">
+          
+          
+          <code class="ruby">      else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="110">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">        #check if appointment is contained within availability on same date</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="111">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="1" data-linenumber="111">
+          <span class="hits">1</span>
           
-          <code class="ruby">    return is_future_date &amp;&amp; service_offered &amp;&amp; provider_available &amp;&amp; </code>
+          <code class="ruby">        if av.month == timeblock.month &amp;&amp; av.day == timeblock.day &amp;&amp; av.year == timeblock.year</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="112">
+        <li class="covered" data-hits="1" data-linenumber="112">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      no_overlap_with_appointments &amp;&amp; availability_contains</code>
+          <code class="ruby">          if !av.contains(timeblock)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="113">
+        <li class="covered" data-hits="1" data-linenumber="113">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">            return false</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="114">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">          end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="115">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">        end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="116">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="116">
           
-          <code class="ruby">  def add_appointment(service, timeblock, client)</code>
+          
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="117">
           
           
-          <code class="ruby">    #add appointment to provider&#39;s schedule</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="covered" data-hits="10" data-linenumber="118">
           <span class="hits">10</span>
           
-          <code class="ruby">    if is_available(service, timeblock, timeblock.isWeekly)</code>
+          <code class="ruby">    return true</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="119">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      appointment = Appointment.new(timeblock, service, client, self)</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="120">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      @appointments &lt;&lt; appointment</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="121">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      successPrint()</code>
-        </li>
-      
-        <li class="covered" data-hits="6" data-linenumber="122">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      return true</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="123">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="124">
-          <span class="hits">4</span>
-          
-          <code class="ruby">      puts &quot;#{Red}The service provider you requested is not available at this time.&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="125">
-          <span class="hits">4</span>
-          
-          <code class="ruby">      puts &quot;Please choose a different date/time.#{Reset}&quot;</code>
-        </li>
-      
-        <li class="covered" data-hits="4" data-linenumber="126">
-          <span class="hits">4</span>
-          
-          <code class="ruby">      return false</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="127">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="128">
+        <li class="never" data-hits="" data-linenumber="119">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="129">
+        <li class="never" data-hits="" data-linenumber="120">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="130">
+        <li class="covered" data-hits="1" data-linenumber="121">
           <span class="hits">1</span>
           
-          <code class="ruby">  def add_availability(timeblock)</code>
+          <code class="ruby">  def add_appointment(service, timeblock, client)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="131">
+        <li class="never" data-hits="" data-linenumber="122">
           
           
-          <code class="ruby">    #need to add a check here</code>
+          <code class="ruby">    #add appointment to provider&#39;s schedule</code>
         </li>
       
-        <li class="covered" data-hits="3" data-linenumber="132">
-          <span class="hits">3</span>
+        <li class="covered" data-hits="10" data-linenumber="123">
+          <span class="hits">10</span>
           
-          <code class="ruby">    @availability &lt;&lt; timeblock</code>
+          <code class="ruby">    if is_available(service, timeblock, timeblock.isWeekly)</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="124">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      appointment = Appointment.new(timeblock, service, client, self)</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="125">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      @appointments &lt;&lt; appointment</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="126">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      successPrint()</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="127">
+          <span class="hits">6</span>
+          
+          <code class="ruby">      return true</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="128">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="129">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      puts &quot;#{Red}The service provider you requested is not available at this time.&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="130">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      puts &quot;Please choose a different date/time.#{Reset}&quot;</code>
+        </li>
+      
+        <li class="covered" data-hits="4" data-linenumber="131">
+          <span class="hits">4</span>
+          
+          <code class="ruby">      return false</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="132">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="133">
@@ -1731,13 +1731,37 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="135">
+        <li class="covered" data-hits="1" data-linenumber="135">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def add_availability(timeblock)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="136">
+          
+          
+          <code class="ruby">    #need to add a check here? probably not</code>
+        </li>
+      
+        <li class="covered" data-hits="3" data-linenumber="137">
+          <span class="hits">3</span>
+          
+          <code class="ruby">    @availability &lt;&lt; timeblock</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="138">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="139">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="136">
+        <li class="never" data-hits="" data-linenumber="140">
           
           
           <code class="ruby">end</code>
@@ -1978,8 +2002,8 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="37">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="37">
+          <span class="hits">4</span>
           
           <code class="ruby">    check1 = (timeblock2.startTime &gt;= @startTime &amp;&amp;</code>
         </li>
@@ -1990,8 +2014,8 @@
           <code class="ruby">        timeblock2.startTime &lt;= @endTime)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="39">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="39">
+          <span class="hits">4</span>
           
           <code class="ruby">    check2 = (@startTime &gt;= timeblock2.startTime &amp;&amp;</code>
         </li>
@@ -2002,8 +2026,8 @@
           <code class="ruby">        @startTime &lt;= timeblock2.endTime)</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="41">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="41">
+          <span class="hits">4</span>
           
           <code class="ruby">    return check1 || check2</code>
         </li>
@@ -2342,7 +2366,7 @@
         <li class="missed" data-hits="0" data-linenumber="22">
           
           
-          <code class="ruby">  appointment3 = Appointment.new(TimeBlock.new(datetime2, false, 120), serviceSet2[1], &#39;Bobby&#39;, all_sp[0])</code>
+          <code class="ruby">  appointment3 = Appointment.new(TimeBlock.new(datetime2, false, 120), serviceSet2[1], &#39;Bobby&#39;, all_sp[1])</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
