@@ -14,16 +14,16 @@ require 'tty-prompt'
 $prompt = TTY::Prompt.new
 
 commands = {
-  'Add service' => Proc.new{serviceAdd},
-  'Remove service' => Proc.new{serviceRemove},
+  'Add service' => Proc.new{serviceAddPrompt},
+  'Remove service' => Proc.new{serviceRemovePrompt},
   'View services' => Proc.new{servicePrint($all_sp)},
   'Add service provider' => Proc.new{spAdd},
   'Remove service provider' => Proc.new{spRemove},
   'View service providers' => Proc.new{spPrint($all_sp)},
-  'Add appointments' => Proc.new{appointmentAdd},
-  'Remove appointments' => Proc.new{appointmentRemove},
-  'Add availability' => Proc.new{availabilityAdd},
-  'Remove availability' => Proc.new{availabilityRemove},
+  'Add appointments' => Proc.new{appointmentAddPrompt},
+  'Remove appointments' => Proc.new{appointmentRemovePrompt},
+  'Add availability' => Proc.new{availabilityAddPrompt},
+  'Remove availability' => Proc.new{availabilityRemovePrompt},
   'View availability' => Proc.new{scheduleView('avail')},
   'View schedule' => Proc.new{scheduleView('appt')},
   'Exit program' => 0

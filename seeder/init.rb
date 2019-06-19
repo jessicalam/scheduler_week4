@@ -19,7 +19,7 @@ def initData
   datetime2 = DateTime.new(2019, 11, 11, 11)
   appointment1 = Appointment.new(TimeBlock.new(datetime1, false, 120), serviceSet1[0], 'Larry', all_sp[0])
   appointment2 = Appointment.new(TimeBlock.new(datetime2, true, 120), serviceSet1[1], 'Emma', all_sp[0])
-  appointment3 = Appointment.new(TimeBlock.new(datetime2, false, 120), serviceSet2[1], 'Bobby', all_sp[0])
+  appointment3 = Appointment.new(TimeBlock.new(datetime2, false, 120), serviceSet2[1], 'Bobby', all_sp[1])
 
   all_sp[0].appointments.push(appointment1)
   all_sp[0].appointments.push(appointment2)
