@@ -1,7 +1,7 @@
 def availabilityAddPrompt
   spPrint($all_sp)
   puts 'Provider Name:'
-  sp = select_sp()
+  service_provider = select_sp()
 
   month = $prompt.ask('Date (MM):')
   while (month.to_i < 1 || month.to_i > 12 || !month)
@@ -50,25 +50,25 @@ def availabilityAddPrompt
   start_datetime = DateTime.new(year.to_i, month.to_i, day.to_i, start_hour, start_minute)
   timeblock = TimeBlock.new(start_datetime, isWeekly, length)
 
-  sp.add_availability(timeblock)
+  service_provider.add_availability(timeblock)
   successPrint()
 end
 
 def availabilityRemovePrompt
   puts 'Provider Name To Remove Availability:'
-  sp = select_sp()
+  service_provider = select_sp()
 
   # availability for this provider is placed in a hash for UI purposes only
   # this makes it so that the availability prints nicely when choosing the availability to remove
-  availability_hash = convert_availability_to_hash(sp)
+  availability_hash = convert_availability_to_hash(service_provider)
 
-  if sp.availability.length == 0
-    puts "No availability found for service provider (#{Magenta}#{sp.name}#{Reset})."
+  if service_provider.availability.length == 0
+    puts "No availability found for service provider (#{Magenta}#{service_provider.name}#{Reset})."
   else
     loop do
       availability_keys = availability_hash.keys
       av_to_be_deleted = $prompt.select("Choose Availability to remove", availability_keys, cycle: true)
-      sp.availability.delete(availability_hash[av_to_be_deleted])
+      service_provider.availability.delete(availability_hash[av_to_be_deleted])
       successPrint()
       break
     end
@@ -90,9 +90,9 @@ def y_or_n
   end
 end
 
-def convert_availability_to_hash(sp)
+def convert_availability_to_hash(service_provider)
   av_hash = {}
-  sp.availability.each do |av|
+  service_provider.availability.each do |av|
     key = av.getDetails
     av_hash[key] = av
   end

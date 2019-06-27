@@ -17,8 +17,8 @@ end
 
 
 def spRemove
-  sp = select_sp()
-  $prompt.yes?("Are you sure you want to delete #{sp.name}") ? $all_sp.delete(sp) : (puts 'Did Not Delete')
+  service_provider = select_sp()
+  $prompt.yes?("Are you sure you want to delete #{service_provider.name}") ? $all_sp.delete(service_provider) : (puts 'Did Not Delete')
 end
 
 def select_sp
@@ -30,7 +30,7 @@ def select_sp
 end
 
 def get_sp_by_name(name)
-  sp = $all_sp.select do |sp| 
+  sp = $all_sp.select do |sp|
     sp.name == name
   end
   if sp.length == 1
@@ -44,12 +44,12 @@ end
 def scheduleView(type)
   loop do
     puts "Choose a Service Provider to see their schedule:"
-    sp = select_sp()
+    service_provider = select_sp()
     if type == 'appt'
-      sp.scheduleView()
+      service_provider.scheduleView()
       break
     elsif type == 'avail'
-      sp.availabilityView()
+      service_provider.availabilityView()
       break
     end
   end

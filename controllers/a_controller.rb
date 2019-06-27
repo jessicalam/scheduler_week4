@@ -12,10 +12,10 @@ def appointmentAddPrompt
   servicePrint($all_sp)
 
   puts 'Provider Name:'
-  sp = select_sp()
+  service_provider = select_sp()
 
   serv_names = []
-  sp.services.each do |serv|
+  service_provider.services.each do |serv|
     serv_names << serv.name
   end
   service_name = $prompt.select("#{BgMagenta}Service Name:#{Reset}", serv_names, cycle: true)
@@ -52,10 +52,10 @@ def appointmentAddPrompt
 
     puts 'Will This Appointment Reoccur Weekly?'
     isWeekly = y_or_n()
-    service = sp.containsService(service_name)
+    service = service_provider.containsService(service_name)
 
     start_datetime = DateTime.new(year.to_i, month.to_i, day.to_i, hour, minute)
-    if sp.add_appointment(service, TimeBlock.new(start_datetime, isWeekly, service.length), client_name)
+    if service_provider.add_appointment(service, TimeBlock.new(start_datetime, isWeekly, service.length), client_name)
       is_available = true
     end
   end
@@ -63,22 +63,22 @@ end
 
 def appointmentRemovePrompt
   spPrint($all_sp)
-  puts 'Provider Name To Cancel Appt:'
-  sp = select_sp()
+  puts 'Provider Name To Cancel Appointment:'
+  service_provider = select_sp()
 
   client_name = $prompt.ask('Your Name:')
 
   # appointments for this provider are placed in a hash for UI purposes only
   # this makes it so that the appointments print nicely when choosing the appointment to remove
-  appointment_hash, num_appointments_with_client = count_appointments_and_convert_to_hash(sp, client_name)
+  appointment_hash, num_appointments_with_client = count_appointments_and_convert_to_hash(service_provider, client_name)
 
   if num_appointments_with_client == 0
-    puts "No appointments found for client (#{Cyan}#{client_name}#{Reset}) under service provider (#{Magenta}#{sp.name}#{Reset})."
+    puts "No appointments found for client (#{Cyan}#{client_name}#{Reset}) under service provider (#{Magenta}#{service_provider.name}#{Reset})."
   else
     loop do
       appointment_keys = appointment_hash.keys
       a_to_be_deleted = $prompt.select("Choose Appointment to remove", appointment_keys, cycle: true)
-      sp.appointments.delete(appointment_hash[a_to_be_deleted])
+      service_provider.appointments.delete(appointment_hash[a_to_be_deleted])
       successPrint()
       break
     end
@@ -100,10 +100,10 @@ def y_or_n
   end
 end
 
-def count_appointments_and_convert_to_hash(sp, client_name)
+def count_appointments_and_convert_to_hash(service_provider, client_name)
   app_hash = {}
   num_apps = 0
-  sp.appointments.each do |a|
+  service_provider.appointments.each do |a|
     if a.client_name == client_name
       key = a.getDetails
       app_hash[key] = a
