@@ -30,10 +30,10 @@ class ServiceProvider
   end
 
   def schedule_view()
-    puts
     if @appointments.empty?
       puts "No appointments found for service provider (#{Magenta}#{@name}#{Reset})"
     else
+      puts
       puts "#{Magenta}#{@name}#{Reset}'s Appointments:"
       @appointments.each do |a|
         a.print_details
@@ -43,10 +43,10 @@ class ServiceProvider
   end
 
   def availability_view()
-    puts
     if @availability.empty?
       puts "No availability found for service provider (#{Magenta}#{@name}#{Reset})"
     else
+      puts
       puts "#{Magenta}#{@name}#{Reset}'s Availability:"
       @availability.each do |a|
         puts "#{BgCyan}AVAILABILITY#{Reset}"
