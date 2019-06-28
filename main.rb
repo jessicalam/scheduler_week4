@@ -6,26 +6,26 @@ require_relative './lib/print'
 require_relative './seeder/init'
 require_relative './lib/colors'
 require_relative './models/availability'
-require_relative './controllers/sp_controller'
-require_relative './controllers/s_controller'
-require_relative './controllers/a_controller'
-require_relative './controllers/avail_controller'
+require_relative './controllers/serviceprovider_controller'
+require_relative './controllers/service_controller'
+require_relative './controllers/appointment_controller'
+require_relative './controllers/availability_controller'
 require 'tty-prompt'
 $prompt = TTY::Prompt.new
 
 commands = {
-  'Add service' => Proc.new{serviceAddPrompt},
-  'Remove service' => Proc.new{serviceRemovePrompt},
-  'View services' => Proc.new{servicePrint($all_sp)},
-  'Add service provider' => Proc.new{spAdd},
-  'Remove service provider' => Proc.new{spRemove},
-  'View service providers' => Proc.new{spPrint($all_sp)},
-  'Add appointments' => Proc.new{appointmentAddPrompt},
-  'Remove appointments' => Proc.new{appointmentRemovePrompt},
-  'Add availability' => Proc.new{availabilityAddPrompt},
-  'Remove availability' => Proc.new{availabilityRemovePrompt},
-  'View availability' => Proc.new{scheduleView('avail')},
-  'View schedule' => Proc.new{scheduleView('appt')},
+  'Add service' => Proc.new{service_add_prompt},
+  'Remove service' => Proc.new{service_remove_prompt},
+  'View services' => Proc.new{service_print($all_sp)},
+  'Add service provider' => Proc.new{serviceprovider_add},
+  'Remove service provider' => Proc.new{serviceprovider_remove},
+  'View service providers' => Proc.new{print_serviceproviders($all_sp)},
+  'Add appointments' => Proc.new{appointment_add_prompt},
+  'Remove appointments' => Proc.new{appointment_remove_prompt},
+  'Add availability' => Proc.new{availability_add_prompt},
+  'Remove availability' => Proc.new{availability_remove_prompt},
+  'View availability' => Proc.new{schedule_view('avail')},
+  'View schedule' => Proc.new{schedule_view('appt')},
   'Exit program' => 0
 }
 

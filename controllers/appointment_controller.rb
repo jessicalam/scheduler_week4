@@ -1,7 +1,7 @@
-require_relative './sp_controller'
-require_relative './s_controller'
+require_relative './serviceprovider_controller'
+require_relative './service_controller'
 
-def appointmentAddPrompt
+def appointment_add_prompt
   client_name = $prompt.ask('Client Name:')
   while (client_name == nil)
     puts "Error: Name"
@@ -9,10 +9,10 @@ def appointmentAddPrompt
   end
 
   puts "Hello #{client_name}! Choose Provider & Service to Schedule"
-  servicePrint($all_sp)
+  service_print($all_sp)
 
   puts 'Provider Name:'
-  service_provider = select_sp()
+  service_provider = select_serviceprovider()
 
   serv_names = []
   service_provider.services.each do |serv|
@@ -52,7 +52,7 @@ def appointmentAddPrompt
 
     puts 'Will This Appointment Reoccur Weekly?'
     isWeekly = y_or_n()
-    service = service_provider.containsService(service_name)
+    service = service_provider.contains_service(service_name)
 
     start_datetime = DateTime.new(year.to_i, month.to_i, day.to_i, hour, minute)
     if service_provider.add_appointment(service, TimeBlock.new(start_datetime, isWeekly, service.length), client_name)
@@ -61,10 +61,10 @@ def appointmentAddPrompt
   end
 end
 
-def appointmentRemovePrompt
-  spPrint($all_sp)
+def appointment_remove_prompt
+  print_serviceproviders($all_sp)
   puts 'Provider Name To Cancel Appointment:'
-  service_provider = select_sp()
+  service_provider = select_serviceprovider()
 
   client_name = $prompt.ask('Your Name:')
 
@@ -79,7 +79,7 @@ def appointmentRemovePrompt
       appointment_keys = appointment_hash.keys
       a_to_be_deleted = $prompt.select("Choose Appointment to remove", appointment_keys, cycle: true)
       service_provider.appointments.delete(appointment_hash[a_to_be_deleted])
-      successPrint()
+      success_print()
       break
     end
   end
@@ -105,7 +105,7 @@ def count_appointments_and_convert_to_hash(service_provider, client_name)
   num_apps = 0
   service_provider.appointments.each do |a|
     if a.client_name == client_name
-      key = a.getDetails
+      key = a.get_details
       app_hash[key] = a
       num_apps += 1
     end

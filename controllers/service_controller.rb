@@ -1,7 +1,7 @@
-require_relative './sp_controller'
+require_relative './serviceprovider_controller'
 
 
-def serviceAddPrompt
+def service_add_prompt
   service_name = $prompt.ask('Service Name:')
   while (service_name == nil)
     puts "Error: Invalid Name"
@@ -21,22 +21,22 @@ def serviceAddPrompt
   end
 
   loop do
-    service_provider = select_sp()
+    service_provider = select_serviceprovider()
     if service_provider
-      service_provider.serviceAdd(Service.new(service_name, service_price, service_length))
-      successPrint()
+      service_provider.service_add(Service.new(service_name, service_price, service_length))
+      success_print()
       break
     else
-      serviceErrorMessage()
+      service_error_message()
     end
   end
 end
 
-def serviceRemovePrompt
+def service_remove_prompt
   puts "Choose Service to Remove"
-  servicePrint($all_sp)
+  service_print($all_sp)
 
-  service_provider = select_sp()
+  service_provider = select_serviceprovider()
 
   # services for this provider are placed in a hash for UI purposes only
   # this makes it so that the services print nicely when choosing the service to remove
@@ -49,7 +49,7 @@ def serviceRemovePrompt
       service_keys = service_hash.keys
       serv_to_be_deleted = $prompt.select("Choose Service to remove", service_keys, cycle: true)
       service_provider.services.delete(service_hash[serv_to_be_deleted])
-      successPrint()
+      success_print()
       break
     end
   end
@@ -60,7 +60,7 @@ private
 def convert_services_to_hash(service_provider)
   serv_hash = {}
   service_provider.services.each do |s|
-    key = s.getDetails
+    key = s.get_details
     serv_hash[key] = s
   end
 

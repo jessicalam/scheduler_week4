@@ -13,12 +13,12 @@ require 'date'
 # require 'launchy'
 
 RSpec.describe ServiceProvider do
-    describe "#serviceAdd" do
+    describe "#service_add" do
         describe "add service that sp does not have" do
             it "should add service to sp's services" do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv = Service.new("hugs", 0, 180)
-                sp.serviceAdd(serv)
+                sp.service_add(serv)
                 expect(sp.services.include?(serv)).to eq(true)
             end
         end
@@ -26,15 +26,15 @@ RSpec.describe ServiceProvider do
 
 
 
-    describe "#serviceRemove" do
+    describe "#service_remove" do
         describe "remove service that sp has" do
             it "should remove service from sp's services" do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
                 serv2 = Service.new("shrugs", 3, 60)
-                sp.serviceAdd(serv1)
-                sp.serviceAdd(serv2)
-                sp.serviceRemove(serv1.name)
+                sp.service_add(serv1)
+                sp.service_add(serv2)
+                sp.service_remove(serv1.name)
                 expect(sp.services.include?(serv1)).to eq(false)
             end
         end
@@ -44,9 +44,9 @@ RSpec.describe ServiceProvider do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
                 serv2 = Service.new("shrugs", 3, 60)
-                sp.serviceAdd(serv1)
+                sp.service_add(serv1)
                 test_services_length = 1
-                sp.serviceRemove(serv2.name)
+                sp.service_remove(serv2.name)
                 expect(sp.services.length).to eq(test_services_length)
             end
         end
@@ -54,13 +54,13 @@ RSpec.describe ServiceProvider do
 
 
 
-    describe "#containsService" do
+    describe "#contains_service" do
         describe "check service that sp has" do
             it "returns true" do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
-                sp.serviceAdd(serv1)
-                expect(sp.containsService(serv1.name)).to eq(serv1)
+                sp.service_add(serv1)
+                expect(sp.contains_service(serv1.name)).to eq(serv1)
             end
         end
 
@@ -69,8 +69,8 @@ RSpec.describe ServiceProvider do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
                 serv2 = Service.new("shrugs", 3, 60)
-                sp.serviceAdd(serv1)
-                expect(sp.containsService(serv2.name)).to eq(false)
+                sp.service_add(serv1)
+                expect(sp.contains_service(serv2.name)).to eq(false)
             end
         end
     end
@@ -96,8 +96,8 @@ RSpec.describe ServiceProvider do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
                 serv2 = Service.new("shrugs", 3, 60)
-                sp.serviceAdd(serv1)
-                sp.serviceAdd(serv2)
+                sp.service_add(serv1)
+                sp.service_add(serv2)
                 tb1 = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
                 tb2 = TimeBlock.new(DateTime.new(2019, 11, 11, 11), false, 120)
                 sp.add_appointment(serv1, tb1, 'bill')
@@ -110,8 +110,8 @@ RSpec.describe ServiceProvider do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
                 serv2 = Service.new("shrugs", 3, 60)
-                sp.serviceAdd(serv1)
-                sp.serviceAdd(serv2)
+                sp.service_add(serv1)
+                sp.service_add(serv2)
                 tb1 = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
                 sp.add_appointment(serv1, tb1, 'bill')
                 expect(sp.is_available(serv2, tb1, false)).to eq(false)
@@ -126,7 +126,7 @@ RSpec.describe ServiceProvider do
             it "should add appointment to sp's appointments" do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
-                sp.serviceAdd(serv1)
+                sp.service_add(serv1)
                 tb1 = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
                 tb2 = TimeBlock.new(DateTime.new(2019, 11, 11, 11), false, 120)
                 sp.add_appointment(serv1, tb1, 'bill')
@@ -139,8 +139,8 @@ RSpec.describe ServiceProvider do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
                 serv2 = Service.new("shrugs", 3, 60)
-                sp.serviceAdd(serv1)
-                sp.serviceAdd(serv2)
+                sp.service_add(serv1)
+                sp.service_add(serv2)
                 tb1 = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
                 sp.add_appointment(serv1, tb1, 'bill')
                 expect(sp.add_appointment(serv2, tb1, 'bill')).to eq(false)
@@ -152,8 +152,8 @@ RSpec.describe ServiceProvider do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
                 serv2 = Service.new("shrugs", 3, 60)
-                sp.serviceAdd(serv1)
-                sp.serviceAdd(serv2)
+                sp.service_add(serv1)
+                sp.service_add(serv2)
                 tb1 = TimeBlock.new(DateTime.new(2019, 12, 5, 12), true, 120)
                 tb2 = TimeBlock.new(DateTime.new(2019, 12, 12, 12), false, 120)
                 sp.add_appointment(serv1, tb1, 'bill')
@@ -165,7 +165,7 @@ RSpec.describe ServiceProvider do
             it "should print an error message and return false" do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
-                sp.serviceAdd(serv1)
+                sp.service_add(serv1)
                 tb_avail = TimeBlock.new(DateTime.new(2019, 8, 8, 12), false, 240)
                 tb_app = TimeBlock.new(DateTime.new(2019, 8, 8, 15), false, 120)
                 sp.add_availability(tb_avail)
@@ -177,7 +177,7 @@ RSpec.describe ServiceProvider do
             it "should print an error message and return false" do
                 sp = ServiceProvider.new("waluigi", 1111111111, [], [], [])
                 serv1 = Service.new("hugs", 0, 180)
-                sp.serviceAdd(serv1)
+                sp.service_add(serv1)
                 tb_avail = TimeBlock.new(DateTime.new(2019, 8, 8, 12), true, 240)
                 tb_app = TimeBlock.new(DateTime.new(2019, 8, 15, 15), false, 120)
                 sp.add_availability(tb_avail)

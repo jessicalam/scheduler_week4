@@ -62,11 +62,11 @@ class TimeBlock
     return startTime + ((length.to_f)/24)/60
   end
 
-  def printDetails
-    puts self.getDetails
+  def print_details
+    puts self.get_details
   end
 
-  def getDetails
+  def get_details
     "Date: #{Green}#{@startTime.month}/#{@startTime.day}/#{@startTime.year}#{Reset} | Start: #{Green}#{@startTime.strftime("%T")}#{Reset} | Stop: #{Green}#{@endTime.strftime("%T")}#{Reset} | Weekly #{Green}#{@isWeekly}#{Reset}"
   end
 end
