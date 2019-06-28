@@ -1,4 +1,4 @@
-def spAdd
+def serviceprovider_add
   provider_name = $prompt.ask('Provider Name:')
   while (provider_name == nil)
     puts "Error: Invalid Name"
@@ -12,24 +12,24 @@ def spAdd
   end
 
   $all_sp.push(ServiceProvider.new(provider_name, provider_phone, [], {}, []))
-  successPrint()
+  success_print()
 end
 
 
-def spRemove
-  service_provider = select_sp()
+def serviceprovider_remove
+  service_provider = select_serviceprovider()
   $prompt.yes?("Are you sure you want to delete #{service_provider.name}") ? $all_sp.delete(service_provider) : (puts 'Did Not Delete')
 end
 
-def select_sp
+def select_serviceprovider
   sp_names = []
   $all_sp.each do |sp|
       sp_names << sp.name
   end
-  get_sp_by_name($prompt.select("#{BgMagenta}Service Provider:#{Reset}", sp_names, cycle: true))
+  get_serviceprovider_by_name($prompt.select("#{BgMagenta}Service Provider:#{Reset}", sp_names, cycle: true))
 end
 
-def get_sp_by_name(name)
+def get_serviceprovider_by_name(name)
   sp = $all_sp.select do |sp|
     sp.name == name
   end
@@ -41,15 +41,15 @@ def get_sp_by_name(name)
 end
 
 
-def scheduleView(type)
+def schedule_view(type)
   loop do
     puts "Choose a Service Provider to see their schedule:"
-    service_provider = select_sp()
+    service_provider = select_serviceprovider()
     if type == 'appt'
-      service_provider.scheduleView()
+      service_provider.schedule_view()
       break
     elsif type == 'avail'
-      service_provider.availabilityView()
+      service_provider.availability_view()
       break
     end
   end

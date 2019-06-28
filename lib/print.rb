@@ -1,17 +1,17 @@
 
-def successPrint
+def success_print
   puts 'Success!'
   puts ''
 end
 
-def serviceErrorMessage
+def service_error_message
   puts ''
   puts 'Service Provider Not Found...'
   puts 'Choose from the following:'
-  spPrint($all_sp)
+  print_serviceproviders($all_sp)
 end
 
-def spPrint(all_sp)
+def print_serviceproviders(all_sp)
   puts "#{BgMagenta}SERVICE PROVIDERS:#{Reset}"
   puts '------------------'
   all_sp.each do |sp|
@@ -21,11 +21,11 @@ def spPrint(all_sp)
   puts ''
 end
 
-def servicePrint(all_sp)
+def service_print(all_sp)
   puts "#{BgCyan}SERVICES:#{Reset}"
   puts '------------------'
   for sp in all_sp do
-    sp.printServices()
+    sp.print_services()
   end
   puts '------------------'
   puts ''

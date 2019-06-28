@@ -8,11 +8,11 @@ class Appointment
   )
   end
 
-  def printDetails()
-    puts getDetails
+  def print_details()
+    puts get_details
   end
 
-  def getDetails()
+  def get_details()
     dayText = nil
     if @timeblock.isWeekly
       dayText = " - on #{@timeblock.dayOfWeek}'s"
