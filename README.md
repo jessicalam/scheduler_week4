@@ -9,6 +9,14 @@ DSHS is staffed by a receptionist and five service professionals licensed by the
 
 Because DSHS is philosophically opposed to graphical UIs, they have asked for a command-line-only application.
 
+## How To Run DSHS Ruby Scheduler Command Line Only Program
+
+
+    Open terminal
+    cd [the folder with the main.rb file]
+    ruby main.rb
+
+
 ##  Desired features
 
 ### Add/remove services
